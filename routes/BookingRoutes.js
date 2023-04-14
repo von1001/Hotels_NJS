@@ -10,7 +10,7 @@ module.exports = app => {
 
     router.get("/", bookingController.findAll);
     router.get("/:ID", bookingController.findById);
-    router.get("/bookings/:UserID", bookingController.findByUser);
+    router.get("/bookings/:UserID", bookingController.findByUser); //Найти букинг по пользователю
 
     router.delete("/:ID", [authJwt.verifyToken, authJwt.isAdmin], bookingController.delete);
     

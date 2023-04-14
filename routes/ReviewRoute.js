@@ -10,7 +10,7 @@ module.exports = app => {
 
     router.get("/", reviewController.findAll);
     router.get("/:id", reviewController.findById);
-    router.get("/:ReviewID/:PictureID", reviewController.findPicsByReview)
+    router.get("/:ReviewID/:PictureID", reviewController.findPicsByReview) //Найти картинку по отзыву
 
     router.delete("/:id", [authJwt.verifyToken, authJwt.isAdmin], reviewController.delete);
     

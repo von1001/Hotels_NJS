@@ -10,7 +10,7 @@ module.exports = app => {
 
     router.get("/", hotelController.findAll);
     router.get("/:ID", hotelController.findById);
-    router.get("/pictures/:HotelID", hotelController.findPicsByHotel);
+    router.get("/pictures/:HotelID", hotelController.findPicsByHotel); //Найти картинку по отелю
 
     router.delete("/:ID", [authJwt.verifyToken, authJwt.isAdmin], hotelController.delete);
     

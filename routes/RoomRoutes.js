@@ -10,8 +10,8 @@ module.exports = app => {
 
     router.get("/", roomController.findAll);
     router.get("/:RoomID", roomController.findById);
-    router.get("/service/:RoomTypeID", roomController.findServiceByRoomType);
-    router.get("/room/:RoomID", roomController.findRoomByRoomType);
+    router.get("/service/:RoomTypeID", roomController.findServiceByRoomType); //Найти сервисы по типу комнаты
+    router.get("/room/:RoomTypeID", roomController.findRoomByRoomType); //Найти комнаты по типу комнаты
 
     router.delete("/:RoomID", [authJwt.verifyToken, authJwt.isAdmin], roomController.delete);
     
