@@ -1,6 +1,7 @@
 const db = require("../database");
 const ROLES = require("../Models/Role");
 const User = require("../Models/User");
+const Region = require("../Models/Region");
 
 checkDuplicateUsername = (req, res, next) => {
 	User.findOne({
@@ -19,8 +20,8 @@ checkDuplicateUsername = (req, res, next) => {
 };
 
 checkRoleExisted = (req, res, next) => {
-	if (req.body.roles) {
-		ROLES.findOne({ where: { name: req.body.role.name } }).then(data => {
+	if (req.body.role) {
+		ROLES.findOne({ where: { name: req.body.role } }).then(data => {
 			if (!data) {
 				res.status(400).send({
 					message: "Failed! Role does not exist = " + req.body.role
@@ -32,9 +33,11 @@ checkRoleExisted = (req, res, next) => {
 	next();
 };
 
+
 const verifySignUp = {
 	checkDuplicateUsername: checkDuplicateUsername,
-	checkRoleExisted: checkRoleExisted
+	checkRoleExisted: checkRoleExisted,
+	checkRegionExisted: checkRegionExisted
 }
 
 module.exports = verifySignUp;

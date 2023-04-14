@@ -1,17 +1,19 @@
+const authJwt = require("../middleware/authJwt");
+
 module.exports = app => {
     const roomController = require("../Controllers/RoomController");
     const router = require("express").Router();
     
-    router.post("/", roomController.create);
+    router.post("/", [authJwt.verifyToken, authJwt.isAdmin], roomController.create);
 
-    router.put("/:RoomID", roomController.update);
+    router.put("/:RoomID", [authJwt.verifyToken, authJwt.isAdmin], roomController.update);
 
     router.get("/", roomController.findAll);
     router.get("/:RoomID", roomController.findById);
     router.get("/service/:RoomTypeID", roomController.findServiceByRoomType);
-    router.get("/:room/:RoomID", roomController.findRoomByRoomType);
+    router.get("/room/:RoomID", roomController.findRoomByRoomType);
 
-    router.delete("/:RoomID", roomController.delete);
+    router.delete("/:RoomID", [authJwt.verifyToken, authJwt.isAdmin], roomController.delete);
     
     app.use("/room", router);
 }
