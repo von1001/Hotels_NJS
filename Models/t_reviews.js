@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+const sequelize = require('sequelize');
 
 const ReviewPicture = require('./t_reviewpicture');
 

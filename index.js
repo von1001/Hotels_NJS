@@ -7,7 +7,7 @@ const initModels = require("./Models/init-models.js");
 
 initModels(DB);
 
-DB.sync();
+// DB.sync();
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

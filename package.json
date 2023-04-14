@@ -11,8 +11,13 @@
   "dependencies": {
     "express": "^4.18.2",
     "mysql2": "^3.1.2",
-    "sequelize": "^6.28.0",
-    "sequelize-auto": "^0.8.8"
+    "sequelize": "^6.31.0",
+    "sequelize-auto": "^0.8.8",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.2"
   },
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "swagger-autogen": "^2.23.1"
+  }
 }

@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+const sequelize = require('sequelize');
 
 const Room = require('./t_room');
 const User = require('./t_user');

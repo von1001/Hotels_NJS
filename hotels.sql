@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1
--- Время создания: Апр 14 2023 г., 10:17
--- Версия сервера: 10.4.24-MariaDB
--- Версия PHP: 8.1.6
+-- Host: 127.0.0.1
+-- Generation Time: Apr 14, 2023 at 11:38 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `hotels`
+-- Database: `hotels`
 --
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `t_booking`
+-- Table structure for table `t_booking`
 --
 
 CREATE TABLE `t_booking` (
@@ -36,7 +36,7 @@ CREATE TABLE `t_booking` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `t_booking`
+-- Dumping data for table `t_booking`
 --
 
 INSERT INTO `t_booking` (`ID`, `UserId`, `ArrivalDate`, `DepartureDate`, `RoomId`) VALUES
@@ -45,7 +45,7 @@ INSERT INTO `t_booking` (`ID`, `UserId`, `ArrivalDate`, `DepartureDate`, `RoomId
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `t_extrashotel`
+-- Table structure for table `t_extrashotel`
 --
 
 CREATE TABLE `t_extrashotel` (
@@ -54,10 +54,20 @@ CREATE TABLE `t_extrashotel` (
   `ServiceID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `t_extrashotel`
+--
+
+INSERT INTO `t_extrashotel` (`ID`, `HotelID`, `ServiceID`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 2, 3),
+(4, 2, 2);
+
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `t_extrasroom`
+-- Table structure for table `t_extrasroom`
 --
 
 CREATE TABLE `t_extrasroom` (
@@ -66,10 +76,20 @@ CREATE TABLE `t_extrasroom` (
   `ServiceID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `t_extrasroom`
+--
+
+INSERT INTO `t_extrasroom` (`ID`, `RoomID`, `ServiceID`) VALUES
+(1, 1, 4),
+(2, 2, 5),
+(3, 3, 4),
+(4, 4, 5);
+
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `t_hotel`
+-- Table structure for table `t_hotel`
 --
 
 CREATE TABLE `t_hotel` (
@@ -83,7 +103,7 @@ CREATE TABLE `t_hotel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `t_hotel`
+-- Dumping data for table `t_hotel`
 --
 
 INSERT INTO `t_hotel` (`ID`, `Name`, `Description`, `Adress`, `Floors`, `Stars`, `HotelPictureID`) VALUES
@@ -93,7 +113,7 @@ INSERT INTO `t_hotel` (`ID`, `Name`, `Description`, `Adress`, `Floors`, `Stars`,
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `t_hotelpicture`
+-- Table structure for table `t_hotelpicture`
 --
 
 CREATE TABLE `t_hotelpicture` (
@@ -103,7 +123,7 @@ CREATE TABLE `t_hotelpicture` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `t_hotelpicture`
+-- Dumping data for table `t_hotelpicture`
 --
 
 INSERT INTO `t_hotelpicture` (`ID`, `HotelPicture`, `HotelID`) VALUES
@@ -113,7 +133,7 @@ INSERT INTO `t_hotelpicture` (`ID`, `HotelPicture`, `HotelID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `t_reviewpicture`
+-- Table structure for table `t_reviewpicture`
 --
 
 CREATE TABLE `t_reviewpicture` (
@@ -123,7 +143,7 @@ CREATE TABLE `t_reviewpicture` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `t_reviewpicture`
+-- Dumping data for table `t_reviewpicture`
 --
 
 INSERT INTO `t_reviewpicture` (`ID`, `ReviewsID`, `ReviewPicture`) VALUES
@@ -133,7 +153,7 @@ INSERT INTO `t_reviewpicture` (`ID`, `ReviewsID`, `ReviewPicture`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `t_reviews`
+-- Table structure for table `t_reviews`
 --
 
 CREATE TABLE `t_reviews` (
@@ -146,7 +166,7 @@ CREATE TABLE `t_reviews` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `t_reviews`
+-- Dumping data for table `t_reviews`
 --
 
 INSERT INTO `t_reviews` (`ID`, `UserID`, `BookingId`, `Opinion`, `Rating`, `ReviewPictureID`) VALUES
@@ -155,7 +175,7 @@ INSERT INTO `t_reviews` (`ID`, `UserID`, `BookingId`, `Opinion`, `Rating`, `Revi
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `t_room`
+-- Table structure for table `t_room`
 --
 
 CREATE TABLE `t_room` (
@@ -168,7 +188,7 @@ CREATE TABLE `t_room` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `t_room`
+-- Dumping data for table `t_room`
 --
 
 INSERT INTO `t_room` (`HotelID`, `RoomID`, `RoomTypeID`, `Price`, `Amount`, `RoomPictureID`) VALUES
@@ -180,7 +200,7 @@ INSERT INTO `t_room` (`HotelID`, `RoomID`, `RoomTypeID`, `Price`, `Amount`, `Roo
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `t_roompicture`
+-- Table structure for table `t_roompicture`
 --
 
 CREATE TABLE `t_roompicture` (
@@ -190,7 +210,7 @@ CREATE TABLE `t_roompicture` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `t_roompicture`
+-- Dumping data for table `t_roompicture`
 --
 
 INSERT INTO `t_roompicture` (`ID`, `RoomID`, `RoomPicture`) VALUES
@@ -202,7 +222,7 @@ INSERT INTO `t_roompicture` (`ID`, `RoomID`, `RoomPicture`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `t_roomtype`
+-- Table structure for table `t_roomtype`
 --
 
 CREATE TABLE `t_roomtype` (
@@ -211,7 +231,7 @@ CREATE TABLE `t_roomtype` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `t_roomtype`
+-- Dumping data for table `t_roomtype`
 --
 
 INSERT INTO `t_roomtype` (`ID`, `Type`) VALUES
@@ -222,7 +242,7 @@ INSERT INTO `t_roomtype` (`ID`, `Type`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `t_services`
+-- Table structure for table `t_services`
 --
 
 CREATE TABLE `t_services` (
@@ -230,10 +250,21 @@ CREATE TABLE `t_services` (
   `Name` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `t_services`
+--
+
+INSERT INTO `t_services` (`ID`, `Name`) VALUES
+(1, 'SPA'),
+(2, 'Baby room'),
+(3, 'Garden'),
+(4, 'Wi-fi'),
+(5, 'kitchen');
+
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `t_user`
+-- Table structure for table `t_user`
 --
 
 CREATE TABLE `t_user` (
@@ -243,7 +274,7 @@ CREATE TABLE `t_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `t_user`
+-- Dumping data for table `t_user`
 --
 
 INSERT INTO `t_user` (`ID`, `Username`, `UserPassword`) VALUES
@@ -252,11 +283,11 @@ INSERT INTO `t_user` (`ID`, `Username`, `UserPassword`) VALUES
 (3, 'Mars', 'Mars123');
 
 --
--- Индексы сохранённых таблиц
+-- Indexes for dumped tables
 --
 
 --
--- Индексы таблицы `t_booking`
+-- Indexes for table `t_booking`
 --
 ALTER TABLE `t_booking`
   ADD PRIMARY KEY (`ID`),
@@ -264,7 +295,7 @@ ALTER TABLE `t_booking`
   ADD KEY `RoomId` (`RoomId`);
 
 --
--- Индексы таблицы `t_extrashotel`
+-- Indexes for table `t_extrashotel`
 --
 ALTER TABLE `t_extrashotel`
   ADD PRIMARY KEY (`ID`),
@@ -272,7 +303,7 @@ ALTER TABLE `t_extrashotel`
   ADD KEY `ServiceID` (`ServiceID`);
 
 --
--- Индексы таблицы `t_extrasroom`
+-- Indexes for table `t_extrasroom`
 --
 ALTER TABLE `t_extrasroom`
   ADD PRIMARY KEY (`ID`),
@@ -280,26 +311,26 @@ ALTER TABLE `t_extrasroom`
   ADD KEY `Service` (`ServiceID`);
 
 --
--- Индексы таблицы `t_hotel`
+-- Indexes for table `t_hotel`
 --
 ALTER TABLE `t_hotel`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `HotelPictureID` (`HotelPictureID`);
 
 --
--- Индексы таблицы `t_hotelpicture`
+-- Indexes for table `t_hotelpicture`
 --
 ALTER TABLE `t_hotelpicture`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Индексы таблицы `t_reviewpicture`
+-- Indexes for table `t_reviewpicture`
 --
 ALTER TABLE `t_reviewpicture`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Индексы таблицы `t_reviews`
+-- Indexes for table `t_reviews`
 --
 ALTER TABLE `t_reviews`
   ADD PRIMARY KEY (`ID`),
@@ -308,7 +339,7 @@ ALTER TABLE `t_reviews`
   ADD KEY `UserID` (`UserID`);
 
 --
--- Индексы таблицы `t_room`
+-- Indexes for table `t_room`
 --
 ALTER TABLE `t_room`
   ADD PRIMARY KEY (`RoomID`),
@@ -317,138 +348,138 @@ ALTER TABLE `t_room`
   ADD KEY `RoomPictureID` (`RoomPictureID`);
 
 --
--- Индексы таблицы `t_roompicture`
+-- Indexes for table `t_roompicture`
 --
 ALTER TABLE `t_roompicture`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Индексы таблицы `t_roomtype`
+-- Indexes for table `t_roomtype`
 --
 ALTER TABLE `t_roomtype`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Индексы таблицы `t_services`
+-- Indexes for table `t_services`
 --
 ALTER TABLE `t_services`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Индексы таблицы `t_user`
+-- Indexes for table `t_user`
 --
 ALTER TABLE `t_user`
   ADD PRIMARY KEY (`ID`);
 
 --
--- AUTO_INCREMENT для сохранённых таблиц
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT для таблицы `t_booking`
+-- AUTO_INCREMENT for table `t_booking`
 --
 ALTER TABLE `t_booking`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT для таблицы `t_extrashotel`
+-- AUTO_INCREMENT for table `t_extrashotel`
 --
 ALTER TABLE `t_extrashotel`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT для таблицы `t_extrasroom`
+-- AUTO_INCREMENT for table `t_extrasroom`
 --
 ALTER TABLE `t_extrasroom`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT для таблицы `t_hotel`
+-- AUTO_INCREMENT for table `t_hotel`
 --
 ALTER TABLE `t_hotel`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT для таблицы `t_hotelpicture`
+-- AUTO_INCREMENT for table `t_hotelpicture`
 --
 ALTER TABLE `t_hotelpicture`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT для таблицы `t_reviewpicture`
+-- AUTO_INCREMENT for table `t_reviewpicture`
 --
 ALTER TABLE `t_reviewpicture`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT для таблицы `t_reviews`
+-- AUTO_INCREMENT for table `t_reviews`
 --
 ALTER TABLE `t_reviews`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT для таблицы `t_room`
+-- AUTO_INCREMENT for table `t_room`
 --
 ALTER TABLE `t_room`
   MODIFY `RoomID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT для таблицы `t_roompicture`
+-- AUTO_INCREMENT for table `t_roompicture`
 --
 ALTER TABLE `t_roompicture`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT для таблицы `t_roomtype`
+-- AUTO_INCREMENT for table `t_roomtype`
 --
 ALTER TABLE `t_roomtype`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT для таблицы `t_services`
+-- AUTO_INCREMENT for table `t_services`
 --
 ALTER TABLE `t_services`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT для таблицы `t_user`
+-- AUTO_INCREMENT for table `t_user`
 --
 ALTER TABLE `t_user`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Ограничения внешнего ключа сохраненных таблиц
+-- Constraints for dumped tables
 --
 
 --
--- Ограничения внешнего ключа таблицы `t_booking`
+-- Constraints for table `t_booking`
 --
 ALTER TABLE `t_booking`
   ADD CONSTRAINT `t_booking_ibfk_1` FOREIGN KEY (`UserId`) REFERENCES `t_user` (`ID`),
   ADD CONSTRAINT `t_booking_ibfk_2` FOREIGN KEY (`RoomId`) REFERENCES `t_room` (`RoomID`);
 
 --
--- Ограничения внешнего ключа таблицы `t_extrashotel`
+-- Constraints for table `t_extrashotel`
 --
 ALTER TABLE `t_extrashotel`
   ADD CONSTRAINT `t_extrashotel_ibfk_1` FOREIGN KEY (`HotelID`) REFERENCES `t_hotel` (`ID`),
   ADD CONSTRAINT `t_extrashotel_ibfk_2` FOREIGN KEY (`ServiceID`) REFERENCES `t_services` (`ID`);
 
 --
--- Ограничения внешнего ключа таблицы `t_extrasroom`
+-- Constraints for table `t_extrasroom`
 --
 ALTER TABLE `t_extrasroom`
   ADD CONSTRAINT `t_extrasroom_ibfk_1` FOREIGN KEY (`RoomID`) REFERENCES `t_room` (`RoomID`),
   ADD CONSTRAINT `t_extrasroom_ibfk_2` FOREIGN KEY (`ServiceID`) REFERENCES `t_services` (`ID`);
 
 --
--- Ограничения внешнего ключа таблицы `t_hotel`
+-- Constraints for table `t_hotel`
 --
 ALTER TABLE `t_hotel`
   ADD CONSTRAINT `t_hotel_ibfk_1` FOREIGN KEY (`HotelPictureID`) REFERENCES `t_hotelpicture` (`ID`);
 
 --
--- Ограничения внешнего ключа таблицы `t_reviews`
+-- Constraints for table `t_reviews`
 --
 ALTER TABLE `t_reviews`
   ADD CONSTRAINT `t_reviews_ibfk_1` FOREIGN KEY (`ReviewPictureID`) REFERENCES `t_reviewpicture` (`ID`),
@@ -462,7 +493,7 @@ ALTER TABLE `t_reviews`
   ADD CONSTRAINT `t_reviews_ibfk_9` FOREIGN KEY (`UserID`) REFERENCES `t_user` (`ID`);
 
 --
--- Ограничения внешнего ключа таблицы `t_room`
+-- Constraints for table `t_room`
 --
 ALTER TABLE `t_room`
   ADD CONSTRAINT `t_room_ibfk_1` FOREIGN KEY (`RoomTypeID`) REFERENCES `t_roomtype` (`ID`),

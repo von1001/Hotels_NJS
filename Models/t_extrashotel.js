@@ -1,7 +1,7 @@
-const Sequelize = require('sequelize');
+const sequelize = require('sequelize');
 
 const Hotel = require('./t_hotel');
-const Service = require('./t_service');
+const Service = require('./t_services');
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('t_extrashotel', {

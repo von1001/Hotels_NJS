@@ -1,7 +1,7 @@
-const Sequelize = require('sequelize');
+const sequelize = require('sequelize');
 
-const RoomType = sequelize('./t_roomtype');
-const RoomPicture = sequelize('./t_roompicture');
+const RoomType = new sequelize('./t_roomtype');
+const RoomPicture = new sequelize('./t_roompicture');
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('t_room', {
