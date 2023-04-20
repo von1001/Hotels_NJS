@@ -10,7 +10,7 @@ module.exports = app => {
 
     router.get("/", roleController.findAll);
     router.get("/:RoleID", roleController.findById);
-    router.get("/users/:RoleID", roleControler.findUsersByRole); // Найти пользователей по роли
+    router.get("/users/:RoleID", roleController.findUsersByRole); // Найти пользователей по роли
 
     router.delete("/:RoleID", [authJwt.verifyToken, authJwt.isAdmin], roleController.delete);
     

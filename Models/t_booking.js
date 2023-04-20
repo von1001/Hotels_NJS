@@ -3,7 +3,6 @@ const sequelize = require('sequelize');
 const Room = require('./t_room');
 const User = require('./t_user');
 
-
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('t_booking', {
     ID: {
@@ -40,15 +39,5 @@ module.exports = function(sequelize, DataTypes) {
     sequelize,
     tableName: 't_booking',
     timestamps: false,
-    indexes: [
-      {
-        name: "PRIMARY",
-        unique: true,
-        using: "BTREE",
-        fields: [
-          { name: "ID" },
-        ]
-      },
-    ]
   });
 };

@@ -1,7 +1,6 @@
 const db = require("../database");
-const ROLES = require("../Models/Role");
-const User = require("../Models/User");
-const Region = require("../Models/Region");
+const ROLES = require("../Models/t_role");
+const User = require("../Models/t_user");
 
 checkDuplicateUsername = (req, res, next) => {
 	User.findOne({
@@ -37,7 +36,6 @@ checkRoleExisted = (req, res, next) => {
 const verifySignUp = {
 	checkDuplicateUsername: checkDuplicateUsername,
 	checkRoleExisted: checkRoleExisted,
-	checkRegionExisted: checkRegionExisted
 }
 
 module.exports = verifySignUp;

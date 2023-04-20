@@ -1,5 +1,5 @@
-const { verifySignUp } = require("../middleware");
-const controller = require("../controllers/auth.controller");
+const verifySignUp = require("../middleware/verifySignUp");
+const controller = require("../Controllers/AuthController");
 
 module.exports = function(app) {
     app.use(function(req, res, next) {
@@ -7,17 +7,18 @@ module.exports = function(app) {
         "Access-Control-Allow-Headers",
         "x-access-token, Origin, Content-Type, Accept"
     );
-    next();
+    
     });
-
+    
     app.post(
-    "/api/auth/signup",
+    "/auth/signup",
     [
-        verifySignUp.checkDuplicateUsernameOrEmail,
-        verifySignUp.checkRolesExisted
+        verifySignUp.checkDuplicateUsername,
+        verifySignUp.checkRoleExisted
     ],
     controller.signup
     );
 
-    app.post("/api/auth/signin", controller.signin);
+    app.post("/auth/signup", controller.signin);
+    
 };

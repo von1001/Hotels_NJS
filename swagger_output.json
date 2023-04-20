@@ -13,48 +13,9 @@
   "paths": {
     "/auth/signup": {
       "post": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "username": {
-                  "example": "any"
-                },
-                "role": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "password": {
-                  "example": "any"
-                },
-                "roles": {
-                  "example": "any"
-                }
-              }
-            }
-          }
+        "tags":[
+          "auth"
         ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/auth/signin": {
-      "post": {
         "description": "",
         "parameters": [
           {
@@ -89,22 +50,50 @@
         }
       }
     },
-    "/api/auth/signup": {
+    "/auth/signin": {
       "post": {
+        "tags":[
+          "auth"
+        ],
         "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
-    "/api/auth/signin": {
-      "post": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     },
     "/": {
       "post": {
+        "tags":[
+          "Putting"
+        ],
         "description": "",
         "parameters": [
           {
@@ -159,6 +148,9 @@
         }
       },
       "get": {
+        "tags":[
+          "Finding By ID"
+        ],
         "description": "",
         "parameters": [],
         "responses": {
@@ -170,153 +162,13 @@
     },
     "/{ID}": {
       "put": {
+        "tags":[
+          "Putting"
+        ],
         "description": "",
         "parameters": [
           {
             "name": "ID",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "x-access-token",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "Name": {
-                  "example": "any"
-                },
-                "Description": {
-                  "example": "any"
-                },
-                "Adress": {
-                  "example": "any"
-                },
-                "Floors": {
-                  "example": "any"
-                },
-                "Stars": {
-                  "example": "any"
-                },
-                "HotelPictureID": {
-                  "example": "any"
-                },
-                "ServiceID": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          }
-        }
-      },
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "ID",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        }
-      },
-      "delete": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "ID",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "x-access-token",
-            "in": "header",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          }
-        }
-      }
-    },
-    "/bookings/{UserID}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "UserID",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {}
-      }
-    },
-    "/pictures/{HotelID}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "HotelID",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        }
-      }
-    },
-    "/{id}": {
-      "put": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -367,10 +219,13 @@
         }
       },
       "get": {
+        "tags":[
+          "Finding By ID"
+        ],
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "ID",
             "in": "path",
             "required": true,
             "type": "string"
@@ -386,10 +241,13 @@
         }
       },
       "delete": {
+        "tags":[
+          "Deletion"
+        ],
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "ID",
             "in": "path",
             "required": true,
             "type": "string"
@@ -413,9 +271,60 @@
         }
       }
     },
+    "/bookings/{UserID}": {
+      "get": {
+        "tags":[
+          "Custom"
+        ],
+        "description": "Найти букинг по пользователю",
+        "parameters": [
+          {
+            "name": "UserID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/pictures/{HotelID}": {
+      "get": {
+        "tags":[
+          "Custom"
+        ],
+        "description": "Найти картинку по отелю",
+        "parameters": [
+          {
+            "name": "HotelID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
     "/{ReviewID}/{PictureID}": {
       "get": {
-        "description": "",
+        "tags":[
+          "Custom"
+        ],
+        "description": "Найти картинку по отзыву",
         "parameters": [
           {
             "name": "ReviewID",
@@ -442,6 +351,9 @@
     },
     "/{RoleID}": {
       "put": {
+        "tags":[
+          "Putting"
+        ],
         "description": "",
         "parameters": [
           {
@@ -484,6 +396,9 @@
         }
       },
       "get": {
+        "tags":[
+          "Finding By ID"
+        ],
         "description": "",
         "parameters": [
           {
@@ -503,6 +418,9 @@
         }
       },
       "delete": {
+        "tags":[
+          "Deletion"
+        ],
         "description": "",
         "parameters": [
           {
@@ -535,13 +453,33 @@
     },
     "/users/{RoleID}": {
       "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
+        "tags":[
+          "Custom"
+        ],
+        "description": "Найти пользователей по роли",
+        "parameters": [
+          {
+            "name": "RoleID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
       }
     },
     "/{RoomID}": {
       "put": {
+        "tags":[
+          "Putting"
+        ],
         "description": "",
         "parameters": [
           {
@@ -602,6 +540,9 @@
         }
       },
       "get": {
+        "tags":[
+          "Finding By ID"
+        ],
         "description": "",
         "parameters": [
           {
@@ -621,6 +562,9 @@
         }
       },
       "delete": {
+        "tags":[
+          "Deletion"
+        ],
         "description": "",
         "parameters": [
           {
@@ -650,7 +594,10 @@
     },
     "/service/{RoomTypeID}": {
       "get": {
-        "description": "",
+        "tags":[
+          "Custom"
+        ],
+        "description": "Найти сервисы по типу комнаты",
         "parameters": [
           {
             "name": "RoomTypeID",
@@ -671,7 +618,10 @@
     },
     "/room/{RoomTypeID}": {
       "get": {
-        "description": "",
+        "tags":[
+          "Custom"
+        ],
+        "description": "Найти комнаты по типу комнаты",
         "parameters": [
           {
             "name": "RoomTypeID",
@@ -692,6 +642,9 @@
     },
     "/api/test/all": {
       "get": {
+        "tags":[
+          "tests"
+        ],
         "description": "",
         "parameters": [],
         "responses": {}
@@ -699,6 +652,9 @@
     },
     "/api/test/user": {
       "get": {
+        "tags":[
+          "tests"
+        ],
         "description": "",
         "parameters": [],
         "responses": {}
@@ -706,6 +662,9 @@
     },
     "/api/test/mod": {
       "get": {
+        "tags":[
+          "tests"
+        ],
         "description": "",
         "parameters": [],
         "responses": {}
@@ -713,6 +672,9 @@
     },
     "/api/test/admin": {
       "get": {
+        "tags":[
+          "tests"
+        ],
         "description": "",
         "parameters": [],
         "responses": {}

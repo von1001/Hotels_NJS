@@ -1,7 +1,7 @@
 const authJwt = require("../middleware/authJwt");
 
 module.exports = app => {
-    const bookingController = require("../Controllers/BookingControllers");
+    const bookingController = require("../Controllers/BookingController");
     const router = require("express").Router();
 
     router.post("/", [authJwt.verifyToken, authJwt.isAdmin], bookingController.create);

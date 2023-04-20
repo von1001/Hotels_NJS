@@ -1,8 +1,8 @@
 const jwt = require("jsonwebtoken");
 const config = require("../authConfig.js");
 const db = require("../database");
-const User = require("../Models/User");
-const Role = require("../Models/Role");
+const User = require("../Models/t_user");
+const Role = require("../Models/t_role");
 
 exports.verifyToken = (req, res, next) => {
 	let token = req.headers["x-access-token"];

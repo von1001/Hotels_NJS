@@ -6,13 +6,13 @@ module.exports = app => {
     
     router.post("/", [authJwt.verifyToken, authJwt.isAdmin], reviewController.create);
 
-    router.put("/:id", [authJwt.verifyToken, authJwt.isAdmin], reviewController.update);
+    router.put("/:ID", [authJwt.verifyToken, authJwt.isAdmin], reviewController.update);
 
     router.get("/", reviewController.findAll);
-    router.get("/:id", reviewController.findById);
+    router.get("/:ID", reviewController.findById);
     router.get("/:ReviewID/:PictureID", reviewController.findPicsByReview) //Найти картинку по отзыву
 
-    router.delete("/:id", [authJwt.verifyToken, authJwt.isAdmin], reviewController.delete);
+    router.delete("/:ID", [authJwt.verifyToken, authJwt.isAdmin], reviewController.delete);
     
     app.use("/review", router);
 }

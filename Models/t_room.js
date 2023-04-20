@@ -1,7 +1,7 @@
 const sequelize = require('sequelize');
 
-const RoomType = new sequelize('./t_roomtype');
-const RoomPicture = new sequelize('./t_roompicture');
+// const RoomType = new sequelize('./t_roomtype');
+// const RoomPicture = new sequelize('./t_roompicture');
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('t_room', {
@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: RoomType,
+        model: "t_roomtype",
         key: 'ID'
       }
     },
@@ -31,7 +31,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: RoomPicture,
+        model: "t_roompicture",
         key: 'ID'
       }
     }
@@ -39,15 +39,5 @@ module.exports = function(sequelize, DataTypes) {
     sequelize,
     tableName: 't_room',
     timestamps: false,
-    indexes: [
-      {
-        name: "PRIMARY",
-        unique: true,
-        using: "BTREE",
-        fields: [
-          { name: "RoomID" },
-        ]
-      },
-    ]
   });
 };
